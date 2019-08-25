@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>equals和==的区别 | Hexo</title>
+  <meta name="keywords" content=" JAVA基础语法 ">
+  <meta name="description" content="equals和==的区别 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="产生背景Spring是一个开源的轻量级Java企业应用开发框架，其初衷是为了替代当时非常笨重的Java EE（当时还称为J2EE）组件技术EJB（Enterprice Java Beans），让Java EE开发更加简单灵活。 用一句话介绍SpringSpring简单来说就是一个大熔炉，它可以整合其他技术或框架，然后让它们更好的配合。 最主要的两个特性理解Spring最主要的两个特性是使用好框架的">
+<meta name="keywords" content="Spring基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring简介">
+<meta property="og:url" content="http://yoursite.com/2019/08/25/SPRING/1th-Spring/001-introduce/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="产生背景Spring是一个开源的轻量级Java企业应用开发框架，其初衷是为了替代当时非常笨重的Java EE（当时还称为J2EE）组件技术EJB（Enterprice Java Beans），让Java EE开发更加简单灵活。 用一句话介绍SpringSpring简单来说就是一个大熔炉，它可以整合其他技术或框架，然后让它们更好的配合。 最主要的两个特性理解Spring最主要的两个特性是使用好框架的">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T05:44:10.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring简介">
+<meta name="twitter:description" content="产生背景Spring是一个开源的轻量级Java企业应用开发框架，其初衷是为了替代当时非常笨重的Java EE（当时还称为J2EE）组件技术EJB（Enterprice Java Beans），让Java EE开发更加简单灵活。 用一句话介绍SpringSpring简单来说就是一个大熔炉，它可以整合其他技术或框架，然后让它们更好的配合。 最主要的两个特性理解Spring最主要的两个特性是使用好框架的">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/rainbow.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(47)</small></div></li>
+    
+        
+            
+            <li><div data-rel="工具"><i class="fold iconfont icon-right"></i>工具<small>(1)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="工具子类1">工具子类1<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="JAVA"><i class="fold iconfont icon-right"></i>JAVA<small>(46)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="Exception">Exception<small>(4)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="CoreClass">CoreClass<small>(5)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Basic">Basic<small>(29)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Log">Log<small>(4)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Reflection">Reflection<small>(2)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Annotation">Annotation<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="Spring">Spring<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="47">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://www.baidu.com/">Baidu</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">3-hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">JAVA核心类</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">JAVA异常</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">JAVA基础语法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">JAVA日志</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">JAVA反射</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">JAVA注解</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">Spring基础</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="工具 工具子类1 "
+           href="/2019/08/24/hello-world/"
+           data-tag="hexo,3-hexo"
+           data-author="" >
+            <span class="post-title" title="3-hexo使用说明">3-hexo使用说明</span>
+            <span class="post-date" title="2019-08-24 16:14:10">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA CoreClass "
+           href="/2019/08/25/JAVA/2th-CoreClass/001-String/"
+           data-tag="JAVA核心类"
+           data-author="" >
+            <span class="post-title" title="String">String</span>
+            <span class="post-date" title="2019-08-25 09:16:33">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Exception "
+           href="/2019/08/25/JAVA/3th-Exception/003-throw_exception/"
+           data-tag="JAVA异常"
+           data-author="" >
+            <span class="post-title" title="抛出异常">抛出异常</span>
+            <span class="post-date" title="2019-08-25 12:58:30">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Exception "
+           href="/2019/08/25/JAVA/3th-Exception/002-catch_exception/"
+           data-tag="JAVA异常"
+           data-author="" >
+            <span class="post-title" title="捕获异常">捕获异常</span>
+            <span class="post-date" title="2019-08-25 12:55:20">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Exception "
+           href="/2019/08/25/JAVA/3th-Exception/001-understand_exception/"
+           data-tag="JAVA异常"
+           data-author="" >
+            <span class="post-title" title="了解异常">了解异常</span>
+            <span class="post-date" title="2019-08-25 12:51:44">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Exception "
+           href="/2019/08/25/JAVA/3th-Exception/004-define_exception/"
+           data-tag="JAVA异常"
+           data-author="" >
+            <span class="post-title" title="自定义异常">自定义异常</span>
+            <span class="post-date" title="2019-08-25 13:01:29">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA CoreClass "
+           href="/2019/08/25/JAVA/2th-CoreClass/002-StringBuilder/"
+           data-tag="JAVA核心类"
+           data-author="" >
+            <span class="post-title" title="StringBuilder">StringBuilder</span>
+            <span class="post-date" title="2019-08-25 12:37:08">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA CoreClass "
+           href="/2019/08/25/JAVA/2th-CoreClass/003-StringJoiner_join/"
+           data-tag="JAVA核心类"
+           data-author="" >
+            <span class="post-title" title="StringJoiner与String.join()">StringJoiner与String.join()</span>
+            <span class="post-date" title="2019-08-25 12:41:59">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA CoreClass "
+           href="/2019/08/25/JAVA/2th-CoreClass/004-enum/"
+           data-tag="JAVA核心类"
+           data-author="" >
+            <span class="post-title" title="enum">enum</span>
+            <span class="post-date" title="2019-08-25 12:45:21">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA CoreClass "
+           href="/2019/08/25/JAVA/2th-CoreClass/005-Math/"
+           data-tag="JAVA核心类"
+           data-author="" >
+            <span class="post-title" title="Math">Math</span>
+            <span class="post-date" title="2019-08-25 12:47:21">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/001-store_cell/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="JVM在内存中为变量分配存储单元">JVM在内存中为变量分配存储单元</span>
+            <span class="post-date" title="2019-08-24 17:10:08">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/003-var/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="var关键字">var关键字</span>
+            <span class="post-date" title="2019-08-24 17:47:02">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/004-operation_correct/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="永远精确的整数运算">永远精确的整数运算</span>
+            <span class="post-date" title="2019-08-24 17:53:35">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/002-occupy_bytes/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="Java基本数据类型占用的字节数">Java基本数据类型占用的字节数</span>
+            <span class="post-date" title="2019-08-24 17:32:23">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/005-overflow/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="整数运算中不会出错的溢出">整数运算中不会出错的溢出</span>
+            <span class="post-date" title="2019-08-24 17:59:57">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/007-improve/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="整型自动提升为浮点型">整型自动提升为浮点型</span>
+            <span class="post-date" title="2019-08-24 18:14:01">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/008-boolean_operation/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="短路的布尔运算">短路的布尔运算</span>
+            <span class="post-date" title="2019-08-24 18:16:57">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/010-null/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="空值null和空字符串&#34;&#34;">空值null和空字符串&#34;&#34;</span>
+            <span class="post-date" title="2019-08-24 20:02:37">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/006-float_double/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="常常无法精确表示的浮点数">常常无法精确表示的浮点数</span>
+            <span class="post-date" title="2019-08-24 18:04:47">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/009-string_not_change/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="字符串的不可变">字符串的不可变</span>
+            <span class="post-date" title="2019-08-24 19:54:35">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/011-create_array/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="数组的初始化默认值与创建">数组的初始化默认值与创建</span>
+            <span class="post-date" title="2019-08-24 20:04:07">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/012-array_continuous_store/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="给数组分配的是连续的内存单元">给数组分配的是连续的内存单元</span>
+            <span class="post-date" title="2019-08-24 20:25:40">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/013-array_not_change/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="数组是不可变的">数组是不可变的</span>
+            <span class="post-date" title="2019-08-24 20:29:41">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/015-string_equals/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="字符串与具体值比较的两个注意">字符串与具体值比较的两个注意</span>
+            <span class="post-date" title="2019-08-24 20:47:05">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/017-bubble_sort/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="冒泡排序算法：对一个整型数组从小到大进行排序">冒泡排序算法：对一个整型数组从小到大进行排序</span>
+            <span class="post-date" title="2019-08-24 21:17:49">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/016-switch/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="switch-case表达式">switch-case表达式</span>
+            <span class="post-date" title="2019-08-24 21:14:01">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/018-array_sort/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="数组排序">数组排序</span>
+            <span class="post-date" title="2019-08-24 21:19:52">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/019-multi_array/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="多维数组">多维数组</span>
+            <span class="post-date" title="2019-08-24 21:25:15">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/020-command_arg/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="命令行参数">命令行参数</span>
+            <span class="post-date" title="2019-08-24 21:30:15">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/021-changeable_args/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="可变参数">可变参数</span>
+            <span class="post-date" title="2019-08-24 21:33:58">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/022-object_attributes/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="对象属性的默认初始值">对象属性的默认初始值</span>
+            <span class="post-date" title="2019-08-24 21:36:16">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/023-public_private/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="public、private">public、private</span>
+            <span class="post-date" title="2019-08-24 21:38:57">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/024-extends_protected/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="在继承中使用的protected">在继承中使用的protected</span>
+            <span class="post-date" title="2019-08-24 22:36:58">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/025-abstract/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="abstract关键字">abstract关键字</span>
+            <span class="post-date" title="2019-08-24 22:42:09">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/026-interface/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="interface中的default关键字">interface中的default关键字</span>
+            <span class="post-date" title="2019-08-24 22:44:59">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/027-charset/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="字符集与字符编码">字符集与字符编码</span>
+            <span class="post-date" title="2019-08-24 22:47:29">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/028-JavaBean/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="JavaBean">JavaBean</span>
+            <span class="post-date" title="2019-08-24 23:16:59">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Log "
+           href="/2019/08/25/JAVA/4th-Log/001-jdk_logging/"
+           data-tag="JAVA日志"
+           data-author="" >
+            <span class="post-title" title="使用JDK Logging">使用JDK Logging</span>
+            <span class="post-date" title="2019-08-25 13:04:12">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/029-dynamic_loading/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="动态加载">动态加载</span>
+            <span class="post-date" title="2019-08-24 23:19:03">2019/08/24</span>
+        </a>
+        
+        <a  class="JAVA Log "
+           href="/2019/08/25/JAVA/4th-Log/002-commons_logging/"
+           data-tag="JAVA日志"
+           data-author="" >
+            <span class="post-title" title="使用Commons Logging">使用Commons Logging</span>
+            <span class="post-date" title="2019-08-25 13:05:57">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Log "
+           href="/2019/08/25/JAVA/4th-Log/004-slf4_and_logback/"
+           data-tag="JAVA日志"
+           data-author="" >
+            <span class="post-title" title="使用SLF4J和Logback">使用SLF4J和Logback</span>
+            <span class="post-date" title="2019-08-25 13:14:05">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Log "
+           href="/2019/08/25/JAVA/4th-Log/003-log4j/"
+           data-tag="JAVA日志"
+           data-author="" >
+            <span class="post-title" title="使用Log4j">使用Log4j</span>
+            <span class="post-date" title="2019-08-25 13:11:42">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Reflection "
+           href="/2019/08/25/JAVA/5th-Reflection/001-what_is_reflection/"
+           data-tag="JAVA反射"
+           data-author="" >
+            <span class="post-title" title="理解反射">理解反射</span>
+            <span class="post-date" title="2019-08-25 13:18:36">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Reflection "
+           href="/2019/08/25/JAVA/5th-Reflection/002-reflection_api/"
+           data-tag="JAVA反射"
+           data-author="" >
+            <span class="post-title" title="反射相关的API">反射相关的API</span>
+            <span class="post-date" title="2019-08-25 13:25:11">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Annotation "
+           href="/2019/08/25/JAVA/6th-Annotation/001-what_is_annotation/"
+           data-tag="JAVA注解"
+           data-author="" >
+            <span class="post-title" title="理解注解">理解注解</span>
+            <span class="post-date" title="2019-08-25 13:30:43">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Spring "
+           href="/2019/08/25/SPRING/1th-Spring/001-introduce/"
+           data-tag="Spring基础"
+           data-author="" >
+            <span class="post-title" title="Spring简介">Spring简介</span>
+            <span class="post-date" title="2019-08-25 13:41:26">2019/08/25</span>
+        </a>
+        
+        <a  class="JAVA Basic "
+           href="/2019/08/24/JAVA/1th-Basic/014-equals/"
+           data-tag="JAVA基础语法"
+           data-author="" >
+            <span class="post-title" title="equals和==的区别">equals和==的区别</span>
+            <span class="post-date" title="2019-08-24 20:39:03">2019/08/24</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-JAVA/1th-Basic/014-equals" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">equals和==的区别</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="JAVA">JAVA</a>/
+            
+                <a href="javascript:" data-rel="Basic">Basic</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color4">JAVA基础语法</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-08-25 12:27:39'>2019-08-24 20:39</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概括"><span class="toc-text">概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用于比较内存单元中存储的内容"><span class="toc-text">==用于比较内存单元中存储的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1）基本类型范例"><span class="toc-text">1）基本类型范例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2）引用类型范例"><span class="toc-text">2）引用类型范例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#equals用于比较内存单元中存储的内容"><span class="toc-text">equals用于比较内存单元中存储的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1）源码解析"><span class="toc-text">1）源码解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2）demo程序"><span class="toc-text">2）demo程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#被重写的-equals-方法"><span class="toc-text">被重写的 equals 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1）demo"><span class="toc-text">1）demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2）analysis"><span class="toc-text">2）analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3）StringBuffer类与String无关，并没有对equals方法进行重写"><span class="toc-text">3）StringBuffer类与String无关，并没有对equals方法进行重写</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h2><p><code>equals</code>和<code>==</code>都是比较内存单元中存储的内容。<br><code>==</code>可以用于基本类型和引用类型的比较。<br><code>equals</code>只能用于引用类型的比较。<br>对于某些类比如String，对<code>equals</code>进行了重写，不再是比较内存单元中存储的内容。</p>
+<h2 id="用于比较内存单元中存储的内容"><a href="#用于比较内存单元中存储的内容" class="headerlink" title="==用于比较内存单元中存储的内容"></a><code>==</code>用于比较内存单元中存储的内容</h2><h3 id="1）基本类型范例"><a href="#1）基本类型范例" class="headerlink" title="1）基本类型范例"></a>1）基本类型范例</h3><pre><code>public static void main(String[] args) {
+    int a =10;
+    int b =10;
+    System.out.println( a == b); // true
+    b=50;
+    System.out.println( a == b); // false
+}</code></pre><p>执行 <code>int a =10;int b =10;</code> 时，JVM在内存中为变量a分配存储单元并填入值10，为变量b分配存储单元并填入值10。在内存单元中，变量a和变量b占据不同的内存单元，但是内存单元存储的值都是10，是相同的，所以返回true。</p>
+<pre style="font-size: 12px; line-height: 12px; border: none; white-space: pre; background-color: transparent;"><code class="language-ascii" style="font-family: &quot;Courier New&quot;, Consolas, monospace;">      a               b
+
+      │               │
+      ▼               ▼                         
+┌───┬───┬───┬───┬───┬───┬───┐
+│   │10 │   │   │   │10 │   │
+└───┴───┴───┴───┴───┴───┴───┘
+</code></pre>
+
+<p>执行 <code>b=50;</code> 时，JVM在把新的值50写入变量b的存储单元中，旧值被覆盖。此时变量a和变量b内存单元存储的值不相同，所以返回false。</p>
+<pre style="font-size: 12px; line-height: 12px; border: none; white-space: pre; background-color: transparent;"><code class="language-ascii" style="font-family: &quot;Courier New&quot;, Consolas, monospace;">      a               b
+
+      │               │
+      ▼               ▼                         
+┌───┬───┬───┬───┬───┬───┬───┐
+│   │10 │   │   │   │50 │   │
+└───┴───┴───┴───┴───┴───┴───┘
+</code></pre>
+
+<h3 id="2）引用类型范例"><a href="#2）引用类型范例" class="headerlink" title="2）引用类型范例"></a>2）引用类型范例</h3><pre><code>public static void main(String[] args) {
+    String x=&quot;hello&quot;;
+    String y= &quot;HELLO&quot;;
+    String z=&quot;hello&quot;;
+
+    System.out.println( x == y.toLowerCase()); // false
+
+    System.out.println( x == z); // true
+}</code></pre><p>对于引用类型，JVM在内存中为变量分配的存储单元存储的是引用类型的地址。</p>
+<p>执行 <code>String x=&quot;hello&quot;; String y= &quot;HELLO&quot;;</code> 时，JVM在内存单元中创建了两个字符串对象，然后为变量x和变量y分配两个存储单元，这两个存储单元存储的内容是两个字符串对象的内存地址。内存地址不同，所以比较结果为false。</p>
+<pre style="font-size: 12px; line-height: 12px; border: none; white-space: pre; background-color: transparent;"><code class="language-ascii" style="font-family: &quot;Courier New&quot;, Consolas, monospace;">          
+                  ┌─────────────────────────────────────────┐     
+                  │                                         │         
+                  │                                         ▼     
+┌───┬───┬───┬───┬─┴─┬───────┬───┬───────┬───┬───────┬───┬───────┬───┐
+│   │ x │   │   │ y │       │   │"hello"│   │       │   │"HELLO"│   │
+└───┴─┬─┴───┴───┴───┴───────┴───┴───────┴───┴───────┴───┴───────┴───┘
+      │                             ▲
+      └─────────────────────────────┘
+</code></pre>
+
+<p>执行 <code>System.out.println( x == z);</code> 结果为true，这涉及到了内存中的常量池。其实上面执行<code>String x=&quot;hello&quot;; String y= &quot;HELLO&quot;;</code>的时候都是先去常量池查找是否存在该字符串，如果常量池中没有才会创建字符串对象并返回该字符串对象的引用。所以在执行 <code>String z=&quot;hello&quot;;</code> ，先去常量池查找，发现前面已经创建过 “hello” 这个字符串，所以直接把该字符串的引用返回给z。因此x和z存储的都是同一个字符串的 <code>引用/内存地址</code> ，也就是x和z在内存单元中存储的内容相同，所以比较结果为true。</p>
+<pre style="font-size: 12px; line-height: 12px; border: none; white-space: pre; background-color: transparent;"><code class="language-ascii" style="font-family: &quot;Courier New&quot;, Consolas, monospace;">          
+                  ┌─────────────────────────────────────────┐     
+                  │                                         │         
+                  │                                         ▼     
+┌───┬───┬───┬───┬─┴─┬───────┬───┬───────┬───┬───────┬───┬───────┬───┐
+│   │ x │   │   │ y │       │   │"hello"│   │       │ z │"HELLO"│   │
+└───┴─┬─┴───┴───┴───┴───────┴───┴───────┴───┴───────┴─┬─┴───────┴───┘
+      │                           ▲ ▲                 │
+      └───────────────────────────│─┘                 │
+                                  └───────────────────┘
+</code></pre>
+
+
+<h2 id="equals用于比较内存单元中存储的内容"><a href="#equals用于比较内存单元中存储的内容" class="headerlink" title="equals用于比较内存单元中存储的内容"></a><code>equals</code>用于比较内存单元中存储的内容</h2><h3 id="1）源码解析"><a href="#1）源码解析" class="headerlink" title="1）源码解析"></a>1）源码解析</h3><p><code>equals</code> 也是比较内存单元中存储的内容，不过只能用于引用类型的比较，不能用于基本类型。</p>
+<p>其实查看源码很好理解，如下，equals方法本身是调用 <code>==</code> 方法，而 <code>==</code> 方法比较的是内存单元中存储的内容，所以equals方法也是用于比较内存单元中存储的内容。由于方法参数是Object类型，所以只能接受对象也就是引用类型。</p>
+<pre><code>public boolean equals(Object obj) {
+    return (this == obj);
+}</code></pre><h3 id="2）demo程序"><a href="#2）demo程序" class="headerlink" title="2）demo程序"></a>2）demo程序</h3><p>下面是demo程序，返回结果为false。</p>
+<pre><code>class Student{
+    int age;
+    String name;
+    public Student(int age,String name){
+        this.age = age;
+        this.name = name;
+    }
+}
+public class Hello {
+    public static void main(String[] args) {
+        Student stu1 = new Student(10,&quot;张三&quot;);
+        Student stu2 = new Student(20,&quot;李四&quot;);
+        System.out.println(stu1.equals(stu2));  // false
+    }
+}</code></pre><h2 id="被重写的-equals-方法"><a href="#被重写的-equals-方法" class="headerlink" title="被重写的 equals 方法"></a>被重写的 <code>equals</code> 方法</h2><h3 id="1）demo"><a href="#1）demo" class="headerlink" title="1）demo"></a>1）demo</h3><pre><code>public static void main(String[] args) {
+    String x=&quot;hello&quot;;
+    String y= new String(&quot;hello&quot;);  
+
+    System.out.println( x.equals(y) ); // true
+}</code></pre><blockquote>
+<p><code>String y= new String(&quot;hello&quot;);</code>通过new方法创建实例，就不会去常量池中查找是否已经存在 “hello” 字符串，而是创建一个新的字符串，并把新字符串的引用赋值给变量y。所以x和y存储的是两个字符串对象的 引用/内存地址，也就是变量x和变量y在内存单元中存储的内容是不同的。</p>
+</blockquote>
+<p>虽然内存单元中存储的内容不同，但是String类对<code>equals</code>方法进行了重写，所以返回的结果并不是false。</p>
+<h3 id="2）analysis"><a href="#2）analysis" class="headerlink" title="2）analysis"></a>2）analysis</h3><p>String的equals方法源码实现如下：</p>
+<pre><code>private final byte coder;
+static final boolean COMPACT_STRINGS;
+
+/*
+* 该函数用于获取coder属性的值
+* 如果COMPACT_STRINGS为true，函数返回coder的值，否则coder默认值为UTF16
+*/
+byte coder() {
+    return COMPACT_STRINGS ? coder : UTF16; 
+}
+
+private boolean isLatin1() {
+    return COMPACT_STRINGS &amp;&amp; coder == LATIN1;
+}
+
+... 
+
+public boolean equals(Object anObject) {
+    if (this == anObject) {
+        return true;
+    }
+    if (anObject instanceof String) {
+        String aString = (String)anObject;
+        if (coder() == aString.coder()) {
+            return isLatin1() ? StringLatin1.equals(value, aString.value)
+      : StringUTF16.equals(value, aString.value);
+        }
+    }
+    return false;
+}</code></pre><p>可以看到先使用 <code>==</code> 判断内存单元中存储的内容是否相同，由于x和y存储的是不同对象的内存地址，所以 <code>this == anObject</code> 不成立，但是源码中并没有直接 return false，而是继续向下判断。如果被比较的对象y不是字符串的实例直接返回false。如果对象y是字符串的实例，执行if语句块，就判断两个字符串的coder属性值是否相等，该属性的取值取值有两种可能： LATIN1或UTF16。</p>
+<blockquote>
+<p><code>coder() == aString.coder()</code> 等价于 <code>this.coder() == aString.coder()</code>。</p>
+</blockquote>
+<p>如果两个字符串的coder值一样，就继续执行。如果coder的值是LATIN1就执行<code>StringLatin1.equals(value, aString.value)</code> ，否则就执行<code>StringUTF16.equals(value, aString.value)</code>。<br>注意这里的 <code>StringLatin1.equals</code> 方法说明了这里调用的equals方法被定义在StringLatin1类中（StringUTF16类对该方法的实现是一模一样的），源代码如下：</p>
+<pre><code>@HotSpotIntrinsicCandidate
+public static boolean equals(byte[] value, byte[] other) {
+    if (value.length == other.length) {
+        for (int i = 0; i &lt; value.length; i++) {
+            if (value[i] != other[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
+}</code></pre><p>从上面源码可以知道，如果coder相等那么就将两个字符串的长度进行比较，如果长度相等就逐个对比两个字符串的字符并返回结果。</p>
+<p><strong><em>小结</em></strong><br>String类对equals进行了重写，比较 <code>x</code> 和 <code>y.toLowerCase()</code>的过程：</p>
+<ol>
+<li>比较内存单元存储的内容是否相同，由于x和y内存单元中存储的内存地址不同，继续判断；</li>
+<li>对象是否是String类型的实例，x和y都是String类型的实例，继续判断；</li>
+<li>判断这两个字符串长度是否相等，这两个字符串长度相等，继续判断；</li>
+<li>判断这两个字符串的每个字符是否相等，结果是相等，所以返回true。</li>
+</ol>
+<h3 id="3）StringBuffer类与String无关，并没有对equals方法进行重写"><a href="#3）StringBuffer类与String无关，并没有对equals方法进行重写" class="headerlink" title="3）StringBuffer类与String无关，并没有对equals方法进行重写"></a>3）<code>StringBuffer</code>类与String无关，并没有对equals方法进行重写</h3><p>StringBuffer类并没有对equals方法进行重写，查看可知调用的是Object原始的equals方法，比较的是内存单元的内容，内存单元存储的是两个字符串对象的 引用/内存地址，所以下面返回结果为false。</p>
+<pre><code>public static void main(String[] args) {
+    StringBuffer stringBuffer1 = new StringBuffer(&quot;hello&quot;);
+    StringBuffer stringBuffer2 = new StringBuffer(&quot;hello&quot;);
+    System.out.println(stringBuffer1.equals(stringBuffer2)); // false
+}</code></pre>
+      
+       <hr><span style="font-style: italic;color: gray;"> 他の者にできたか？ここまでやれたか？この先できるか？いいや、仆にしかできない！ </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2017 John Doe</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#hexo','#3-hexo','#JAVA核心类','#JAVA异常','#JAVA基础语法','#JAVA日志','#JAVA反射','#JAVA注解','#Spring基础',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
